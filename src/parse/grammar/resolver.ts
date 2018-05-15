@@ -1,6 +1,5 @@
 import { HashTable } from "../../lang/lang_extensions"
 import {
-    IParserDefinitionError,
     IParserUnresolvedRefDefinitionError,
     ParserDefinitionErrorType
 } from "../parser_public"
@@ -8,6 +7,7 @@ import { forEach } from "../../utils/utils"
 import { NonTerminal, Rule } from "./gast/gast_public"
 import { GAstVisitor } from "./gast/gast_visitor_public"
 import { IGrammarResolverErrorMessageProvider } from "../errors_public"
+import { IParserDefinitionError } from "../../../api"
 
 export function resolveGrammar(
     topLevels: HashTable<Rule>,

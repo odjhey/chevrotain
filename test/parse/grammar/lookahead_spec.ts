@@ -416,7 +416,7 @@ context("lookahead specs", () => {
             super([], [ColonTok])
         }
 
-        protected LA(): IToken {
+        LA(): IToken {
             return createRegularToken(ColonTok, ":")
         }
     }
@@ -426,7 +426,7 @@ context("lookahead specs", () => {
             super([], [IdentTok])
         }
 
-        protected LA(): IToken {
+        LA(): IToken {
             return createRegularToken(IdentTok, "bamba")
         }
     }
@@ -436,7 +436,7 @@ context("lookahead specs", () => {
             super([], [CommaTok])
         }
 
-        protected LA(): IToken {
+        LA(): IToken {
             return createRegularToken(CommaTok, ",")
         }
     }
@@ -446,7 +446,7 @@ context("lookahead specs", () => {
             super([], [EntityTok])
         }
 
-        protected LA(): IToken {
+        LA(): IToken {
             return createRegularToken(EntityTok, ",")
         }
     }
@@ -456,7 +456,7 @@ context("lookahead specs", () => {
             super([], [KeyTok])
         }
 
-        protected LA(): IToken {
+        LA(): IToken {
             return createRegularToken(KeyTok, ",")
         }
     }

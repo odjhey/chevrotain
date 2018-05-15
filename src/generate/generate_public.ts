@@ -1,19 +1,8 @@
-import { IParserConfig, Parser, TokenVocabulary } from "../parse/parser_public"
+import { Parser } from "../parse/parser_public"
 import { genUmdModule, genWrapperFunction } from "./generate"
 import { Rule } from "../parse/grammar/gast/gast_public"
+import { IParserConfig, TokenVocabulary } from "../../api"
 
-/**
- * Will Create a factory function that once invoked with a IParserConfig will return
- * a Parser Object.
- *
- * - Note that this happens using the Function constructor (a type of "eval") so it will not work in environments
- *   where content security policy is enabled, such as certain websites, Chrome extensions ect...
- *
- *   This means this function is best used for development flows to reduce the feedback loops
- *   or for productive flows targeting node.js only.
- *
- *   For productive flows targeting a browser runtime see @link {generation.generateParserModule}
- */
 export function generateParserFactory<T extends Parser>(options: {
     name: string
     rules: Rule[]

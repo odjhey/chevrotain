@@ -5,7 +5,8 @@
 // both statements in a single rule and only distinguishing between them later, but lets see an example of using backtracking :)
 
 import { IToken } from "../../../src/scan/tokens_public"
-import { Parser, IParserConfig } from "../../../src/parse/parser_public"
+import { Parser } from "../../../src/parse/parser_public"
+import { IParserConfig } from "../../../api"
 
 export enum RET_TYPE {
     WITH_DEFAULT,

@@ -335,9 +335,7 @@ function defineRecognizerSpecs(
                     this.idents.push(this.CONSUME1(IdentTok).image)
                 }
 
-                protected canTokenTypeBeInsertedInRecovery(
-                    tokClass: TokenType
-                ) {
+                public canTokenTypeBeInsertedInRecovery(tokClass: TokenType) {
                     // this parser is meant to test a scenario with re-sync recovery and MANY_SEP --> disable TokenInsertion
                     return false
                 }

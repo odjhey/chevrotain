@@ -2,13 +2,13 @@ import { createToken, IToken } from "../../../src/scan/tokens_public"
 import { Lexer, TokenType } from "../../../src/scan/lexer_public"
 import {
     END_OF_FILE,
-    IAnyOrAlt,
     lookAheadSequence,
     Parser,
     TokenMatcher
 } from "../../../src/parse/parser_public"
 import { MismatchedTokenException } from "../../../src/parse/exceptions_public"
 import { every, flatten, forEach, map } from "../../../src/utils/utils"
+import { IAnyOrAlt } from "../../../api"
 
 const Return = createToken({
     name: "Return",

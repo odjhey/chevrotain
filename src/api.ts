@@ -1,8 +1,4 @@
-import {
-    EMPTY_ALT,
-    Parser,
-    ParserDefinitionErrorType
-} from "./parse/parser_public"
+import { Parser, ParserDefinitionErrorType } from "./parse/parser_public"
 import { Lexer, LexerDefinitionErrorType } from "./scan/lexer_public"
 import {
     createToken,
@@ -52,11 +48,49 @@ import {
     generateParserModule
 } from "./generate/generate_public"
 
+import {
+    Parser as ParserDef,
+    VERSION as versionRef,
+    IToken,
+    TokenVocabulary,
+    IParserConfig,
+    ParserDefinitionErrorType as ParserDefinitionErrorTypeDef,
+    IMultiModeLexerDefinition,
+    TokenType,
+    ILexerConfig,
+    Lexer as LexerDef,
+    LexerDefinitionErrorType as LexerDefinitionErrorTypeDef,
+    tokenName as tokenNameDef
+} from "../api"
+
+interface ParserConstructor {
+    new (
+        input: IToken[],
+        tokenVocabulary: TokenVocabulary,
+        config?: IParserConfig
+    ): ParserDef
+}
+
+interface LexerConstructor {
+    new (
+        lexerDefinition: TokenType[] | IMultiModeLexerDefinition,
+        config: ILexerConfig
+    ): LexerDef
+}
+
 /**
  * defines the public API of
  * changes here may require major version change. (semVer)
  */
-let API: any = {}
+let API: {
+    VERSION: typeof versionRef
+    Parser: ParserConstructor
+    ParserDefinitionErrorType: typeof ParserDefinitionErrorTypeDef
+    Lexer: LexerConstructor
+    LexerDefinitionErrorType: typeof LexerDefinitionErrorTypeDef
+    EOF: TokenType
+    tokenName: typeof tokenNameDef
+} = <any>{}
 
 // semantic version
 API.VERSION = VERSION
@@ -70,48 +104,47 @@ API.EOF = EOF
 
 // Tokens utilities
 API.tokenName = tokenName
-API.tokenLabel = tokenLabel
-API.tokenMatcher = tokenMatcher
-API.createToken = createToken
-API.createTokenInstance = createTokenInstance
-
-// Other Utilities
-API.EMPTY_ALT = EMPTY_ALT
-// TODO: Breaking Change -> renamed property
-API.defaultParserErrorProvider = defaultParserErrorProvider
-API.isRecognitionException = isRecognitionException
-API.EarlyExitException = EarlyExitException
-API.MismatchedTokenException = MismatchedTokenException
-API.NotAllInputParsedException = NotAllInputParsedException
-API.NoViableAltException = NoViableAltException
-
-// grammar reflection API
-API.Flat = Flat
-API.Repetition = Repetition
-API.RepetitionWithSeparator = RepetitionWithSeparator
-API.RepetitionMandatory = RepetitionMandatory
-API.RepetitionMandatoryWithSeparator = RepetitionMandatoryWithSeparator
-API.Option = Option
-API.Alternation = Alternation
-API.NonTerminal = NonTerminal
-API.Terminal = Terminal
-API.Rule = Rule
-
-// GAST Utilities
-API.GAstVisitor = GAstVisitor
-API.serializeGrammar = serializeGrammar
-API.serializeProduction = serializeProduction
-API.resolveGrammar = resolveGrammar
-API.defaultGrammarResolverErrorProvider = defaultGrammarResolverErrorProvider
-API.validateGrammar = validateGrammar
-API.defaultGrammarValidatorErrorProvider = defaultGrammarValidatorErrorProvider
-API.assignOccurrenceIndices = assignOccurrenceIndices
-
-API.clearCache = clearCache
-
-API.createSyntaxDiagramsCode = createSyntaxDiagramsCode
-
-API.generateParserFactory = generateParserFactory
-API.generateParserModule = generateParserModule
+// API.tokenLabel = tokenLabel
+// API.tokenMatcher = tokenMatcher
+// API.createToken = createToken
+// API.createTokenInstance = createTokenInstance
+//
+// // Other Utilities
+// API.EMPTY_ALT = EMPTY_ALT
+// API.defaultParserErrorProvider = defaultParserErrorProvider
+// API.isRecognitionException = isRecognitionException
+// API.EarlyExitException = EarlyExitException
+// API.MismatchedTokenException = MismatchedTokenException
+// API.NotAllInputParsedException = NotAllInputParsedException
+// API.NoViableAltException = NoViableAltException
+//
+// // grammar reflection API
+// API.Flat = Flat
+// API.Repetition = Repetition
+// API.RepetitionWithSeparator = RepetitionWithSeparator
+// API.RepetitionMandatory = RepetitionMandatory
+// API.RepetitionMandatoryWithSeparator = RepetitionMandatoryWithSeparator
+// API.Option = Option
+// API.Alternation = Alternation
+// API.NonTerminal = NonTerminal
+// API.Terminal = Terminal
+// API.Rule = Rule
+//
+// // GAST Utilities
+// API.GAstVisitor = GAstVisitor
+// API.serializeGrammar = serializeGrammar
+// API.serializeProduction = serializeProduction
+// API.resolveGrammar = resolveGrammar
+// API.defaultGrammarResolverErrorProvider = defaultGrammarResolverErrorProvider
+// API.validateGrammar = validateGrammar
+// API.defaultGrammarValidatorErrorProvider = defaultGrammarValidatorErrorProvider
+// API.assignOccurrenceIndices = assignOccurrenceIndices
+//
+// API.clearCache = clearCache
+//
+// API.createSyntaxDiagramsCode = createSyntaxDiagramsCode
+//
+// API.generateParserFactory = generateParserFactory
+// API.generateParserModule = generateParserModule
 
 module.exports = API

@@ -14,9 +14,7 @@ import {
     values
 } from "../../utils/utils"
 import {
-    IgnoredParserIssues,
     IParserAmbiguousAlternativesDefinitionError,
-    IParserDefinitionError,
     IParserDuplicatesDefinitionError,
     IParserEmptyAlternativeDefinitionError,
     ParserDefinitionErrorType
@@ -51,6 +49,7 @@ import {
 } from "./gast/gast_public"
 import { GAstVisitor } from "./gast/gast_visitor_public"
 import { IGrammarValidatorErrorMessageProvider } from "../errors_public"
+import { IgnoredParserIssues, IParserDefinitionError } from "../../../api"
 
 export function validateGrammar(
     topLevels: Rule[],

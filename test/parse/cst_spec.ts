@@ -834,7 +834,7 @@ context("CST", () => {
                     this.CONSUME(D)
                 })
 
-                protected canTokenTypeBeInsertedInRecovery(
+                public canTokenTypeBeInsertedInRecovery(
                     tokType: TokenType
                 ): boolean {
                     // we want to force re-sync recovery
@@ -916,7 +916,7 @@ context("CST", () => {
                     this.CONSUME(D)
                 })
 
-                protected canTokenTypeBeInsertedInRecovery(
+                public canTokenTypeBeInsertedInRecovery(
                     tokType: TokenType
                 ): boolean {
                     // we want to force re-sync recovery

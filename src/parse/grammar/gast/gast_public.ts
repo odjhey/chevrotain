@@ -1,13 +1,6 @@
 import { assign, forEach, isRegExp, map } from "../../../utils/utils"
 import { TokenType } from "../../../scan/lexer_public"
-import { validateGrammar as orgValidateGrammar } from "../checks"
 import { tokenLabel, tokenName } from "../../../scan/tokens_public"
-import { resolveGrammar as orgResolveGrammar } from "../resolver"
-import { HashTable } from "../../../lang/lang_extensions"
-import {
-    IgnoredParserIssues,
-    IParserDefinitionError
-} from "../../parser_public"
 
 export interface IGASTVisitor {
     visit(prod: IProduction)

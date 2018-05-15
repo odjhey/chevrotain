@@ -10,12 +10,7 @@ import {
 } from "../../utils/utils"
 import { possiblePathsFrom } from "./interpreter"
 import { RestWalker } from "./rest"
-import {
-    Predicate,
-    IAnyOrAlt,
-    TokenMatcher,
-    lookAheadSequence
-} from "../parser_public"
+import { Predicate, TokenMatcher, lookAheadSequence } from "../parser_public"
 import { TokenType } from "../../scan/lexer_public"
 import {
     tokenStructuredMatcher,
@@ -35,6 +30,7 @@ import {
     Rule
 } from "./gast/gast_public"
 import { GAstVisitor } from "./gast/gast_visitor_public"
+import { IAnyOrAlt } from "../../../api"
 
 export enum PROD_TYPE {
     OPTION,
